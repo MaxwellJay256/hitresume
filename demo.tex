@@ -1,0 +1,97 @@
+% demo.tex
+% hitresume 简历示例
+% !TEX program = xelatex
+
+% 水印开关：watermark=true 显示水印，watermark=false 不显示水印，默认为 true
+\documentclass[watermark=true]{hitresume}
+\graphicspath{{images/}} % 图片搜索路径
+
+\begin{document}
+
+% ========== 个人信息 ==========
+% 参数：照片宽度、照片路径和姓名为必填项，其他信息按 {栏目名}{内容} 的形式自由书写任意多行。
+\begin{personalinfo}
+    % 建议将照片命名为 photo.xxx 并放在 images 文件夹下，这样不会被 Git 追踪
+    {2.8cm}{photo}{帕秋莉·诺蕾姬} % {照片宽度}{照片文件名}{姓名}，照片建议宽度 2.5 ~ 3cm
+    {性别}{女}
+    {出生年月}{1899.11}
+    {政治面貌}{群众}
+    {电话}{13888888888}
+    {电子邮箱}{maxwelljay256@gmail.com}
+    {GitHub}{\href{https://github.com/MaxwellJay256}{MaxwellJay256}}
+\end{personalinfo}
+
+% ======== 基础格式用法 ========
+% 倾斜字体：\textit{倾斜文本}
+% 加粗字体：\textbf{加粗文本}
+% 改变文字颜色：\textcolor{HITBlueAux1}{想要高亮的文本}
+
+% ========== 教育背景 ==========
+\section{教育背景}
+\datedsubsection{\textcolor{HITBlueAux1}{哈尔滨工业大学（深圳）}，硕士}{\textit{2024.9 -- 2027.6}}
+\begin{itemize}
+    \item 计算机科学与技术学院，工学硕士（推免）
+    \item 专业：计算机科学与技术；核心课程：机器学习、计算机视觉
+\end{itemize}
+\datedsubsection{\textcolor{HITBlueAux1}{哈尔滨工业大学}，本科}{\textit{2020.9 -- 2024.6}}
+\begin{itemize}
+    \item 计算机科学与技术学院，工学学士
+    \item 专业：计算机科学与技术；GPA：3.9/4.0，专业排名前 5\%
+\end{itemize}
+
+% ========== 项目经历 ==========
+% 经历可以使用单个段落直接书写，也可以用 itemize 环境分点描述。
+% 推荐用加粗或高亮的文本突出经历中的关键信息，如解决的难题、使用的技术栈、取得的成果等。
+\section{项目经历}
+\datedsubsection{\textbf{智能文档检索系统}}{\textit{2024.1 -- 2024.8}}
+\begin{itemize}
+    \item 设计并实现基于 \textcolor{HITBlueAux2}{Elasticsearch} 和 BERT 的检索模块，提升检索准确率 15\%；
+    \item 开发基于 Flask 的 Web 前端，实现用户友好的查询界面；
+    \item 关键词：自然语言处理、信息检索、Web开发。
+\end{itemize}
+
+\datedsubsection{\textbf{基于深度学习的图像分类系统}}{\textit{2023.3 -- 2023.8}}
+\begin{itemize}
+    \item 使用 PyTorch \textcolor{HITBlueAux2}{实现 ResNet 在 CIFAR-10 上的分类}，准确率达到 92\%；
+    \item 核心工作：数据增强与学习率调度策略优化，模型轻量化尝试（知识蒸馏）；
+    \item 成果：获得哈尔滨工业大学AI智能创新大赛二等奖。
+\end{itemize}
+
+% ========== 学术经历 ==========
+\section{学术经历}
+\datedsubsection{\textbf{Small-sample image classification based on attention mechanism}}{\textit{2025.4 -- 2025.8}}
+\begin{itemize}
+    \item 针对小样本图像分类任务，设计了一种基于注意力机制的特征提取方法，显著提升了模型在小样本数据上的表现；
+    \item 以第一作者身份撰写论文《基于注意力机制的小样本图像分类》，投稿至 \textcolor{HITBlueAux2}{ICPR 2026}（在审）。
+\end{itemize}
+
+% ========== 实习经历 ==========
+\section{实习经历}
+\datedsubsection{\textbf{红魔馆大图书馆}，大模型开发实习生}{\textit{2025.7 -- 2025.12}}
+\begin{itemize}
+    \item 参与魔导书大型知识库开发，负责基于 \textcolor{HITBlueAux2}{LangChain} 和
+        \textcolor{HITBlueAux2}{RAG} 的智能问答系统设计与实现；
+    \item 开放公共 API，支持多模态输入（文本、图片）和多语言查询，已服务 1000+ 用户，图书被盗率下降 33\%。
+\end{itemize}
+
+% ========= 获奖 & 技能 =========
+% 此处演示使用 minipage 环境实现分栏布局，页面空间紧张时可以考虑。
+\begin{minipage}[t]{0.49\linewidth}
+    \section{个人荣誉}
+        \begin{itemize}
+            \item 第 9 届红魔馆属性魔法学术交流会议最佳论文奖\hfill\textit{2026.3}
+            \item 首届幻想乡魔法使技能竞赛一等奖\hfill\textit{2025.10} % \hfill 可以填充空白，使时间右对齐
+            \item 校级优秀学生干部、2023年国家奖学金
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.49\linewidth}
+    \section{技能}
+    \begin{itemize}
+        \item \textcolor{HITBlueAux2}{精通使用魔法（主要是属性 \& 精灵魔法）程度的能力}；
+        \item 精通 LLM 在搜索引擎、智能问答等服务系统中的应用，熟悉LangChain等常用框架；
+        \item 熟练掌握 Pytorch、TensorFlow 等深度学习框架，具备扎实的机器学习理论基础。
+    \end{itemize}
+\end{minipage}
+
+\end{document}
