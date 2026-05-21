@@ -26,13 +26,16 @@ hitresume 是一个基于 LaTeX 的简历模板，适合哈尔滨工业大学一
 
 ```
 hit-resume/
+├── fonts/
+│   ├── msyh.ttc      % 微软雅黑字体
+│   └── msyhbd.ttc    % 微软雅黑粗体
 ├── images/
 │   ├── hit_logo_large.png   % 哈工大校徽，用于水印
 │   └── hit_title.png        % 哈工大标志和标准字组合，放置于页眉
 ├── demo.pdf          % demo.tex 编译后的示例简历
 ├── demo.tex          % 使用例源文件
 ├── hitresume.cls     % hitresume 模板类文件
-├── README.md         % 说明文档
+└── README.md         % 说明文档
 ```
 
 ### 编译 | compilation
@@ -43,21 +46,47 @@ hit-resume/
 xelatex demo.tex
 ```
 
-即可。
-
 ### 字体 & 段落 | fonts & paragraphs
 
-`hitresume.cls` 中默认字体为微软雅黑。
+为了保证简历编译结果在不同平台上统一，hitresume 的字体由项目内的文件提供，不依赖系统字体。
+`hitresume.cls` 中默认所有文本字体为微软雅黑，即如下代码中的 `msyh.ttc` 和 `msyhbd.ttc`。
 
 ```tex
+% ========== 字体设置 ==========
 \RequirePackage[no-math]{fontspec}
-\setmainfont{Microsoft YaHei}[AutoFakeSlant=0.2]
-\setCJKmainfont{Microsoft YaHei}[AutoFakeSlant=0.2]
-\setCJKsansfont{Microsoft YaHei}[AutoFakeSlant=0.2]
-\setCJKmonofont{Microsoft YaHei}[AutoFakeSlant=0.2]
+\newcommand{\FontDirectory}{fonts/}
+\newcommand{\FontMainFilename}{msyh.ttc}
+\newcommand{\FontBoldFilename}{msyhbd.ttc}
+\setmainfont[ % 英文和数字字体设置
+    Path=\FontDirectory,
+    BoldFont=\FontBoldFilename,
+    AutoFakeSlant=0.2
+]{\FontMainFilename}
+\setCJKmainfont[ % 中文字体设置
+    Path=\FontDirectory,
+    BoldFont=\FontBoldFilename,
+    AutoFakeSlant=0.2
+]{\FontMainFilename}
+\setCJKsansfont[ % 无衬线字体设置
+    Path=\FontDirectory,
+    BoldFont=\FontBoldFilename,
+    AutoFakeSlant=0.2
+]{\FontMainFilename}
+\setCJKmonofont[ % 等宽字体设置
+    Path=\FontDirectory,
+    BoldFont=\FontBoldFilename,
+    AutoFakeSlant=0.2
+]{\FontMainFilename}
 ```
 
-如果要使用其他字体，请将 `Microsoft YaHei` 替换为你想要的字体名称，并确保系统中已安装该字体。
+`msyh.ttc` 和 `msyhbd.ttc` 文件较大，所以被 `fonts/.gitignore` 忽略了。
+Windows 用户可以直接从系统字体目录复制这两个文件到 `fonts/` 目录下；
+[Releases](https://github.com/MaxwellJay256/hitresume/releases) 页面也提供了这两个文件的下载链接。
+
+如果要使用其他字体：
+
+1. 将字体文件放入 `fonts/` 目录；
+2. 定位到 `hitresume.cls` 中 “字体设置” 部分，将 `msyh.ttc` 和 `msyhbd.ttc` 替换为新的字体文件名。如果字体没有独立的粗体，可以将 `BoldFont` 设置为同一字体文件，并启用 `AutoFakeBold`。
 
 `hitresume.cls` 指定了 `\Large` `\large` `\normalsize` 的字体大小和行间距，以及段落缩进和间距：
 
@@ -69,7 +98,7 @@ xelatex demo.tex
 \setlength{\parskip}{4pt}     % 段落间距
 ```
 
-以上段落格式偏紧凑，但也允许用户调整这些参数以适应不同的内容量和排版需求。
+该段落格式偏紧凑，但也允许用户调整这些参数以适应不同的内容量和排版需求。
 
 ### 颜色 | colors
 
@@ -79,7 +108,7 @@ xelatex demo.tex
 
 推荐用户在简历正文用这 4 种颜色设计图案和高亮文本。
 
-### 自定义环境
+### 自定义环境 | custom environments
 
 1. `personalinfo` 是专用于简历顶部的个人信息栏。
 2. `datedsubsection` 是一个带日期标签的 subsection 环境，适合描述经历和项目等内容。

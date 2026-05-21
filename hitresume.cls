@@ -35,10 +35,29 @@
 
 % ========== 字体设置 ==========
 \RequirePackage[no-math]{fontspec}
-\setmainfont{Microsoft YaHei}[AutoFakeSlant=0.2] % AutoFakeSlant - 启用伪斜体，用于不支持斜体的字体
-\setCJKmainfont{Microsoft YaHei}[AutoFakeSlant=0.2]
-\setCJKsansfont{Microsoft YaHei}[AutoFakeSlant=0.2]
-\setCJKmonofont{Microsoft YaHei}[AutoFakeSlant=0.2]
+\newcommand{\FontDirectory}{fonts/}
+\newcommand{\FontMainFilename}{msyh.ttc}
+\newcommand{\FontBoldFilename}{msyhbd.ttc}
+\setmainfont[ % 英文和数字字体设置
+    Path=\FontDirectory,
+    BoldFont=\FontBoldFilename,
+    AutoFakeSlant=0.2
+]{\FontMainFilename}
+\setCJKmainfont[ % 中文字体设置
+    Path=\FontDirectory,
+    BoldFont=\FontBoldFilename,
+    AutoFakeSlant=0.2
+]{\FontMainFilename}
+\setCJKsansfont[ % 无衬线字体设置
+    Path=\FontDirectory,
+    BoldFont=\FontBoldFilename,
+    AutoFakeSlant=0.2
+]{\FontMainFilename}
+\setCJKmonofont[ % 等宽字体设置
+    Path=\FontDirectory,
+    BoldFont=\FontBoldFilename,
+    AutoFakeSlant=0.2
+]{\FontMainFilename}
 
 % 默认正文字号
 \renewcommand{\Large}{\fontsize{13pt}{16pt}\selectfont} % {字号}{行距}
