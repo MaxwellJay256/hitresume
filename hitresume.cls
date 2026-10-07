@@ -1,14 +1,14 @@
 % hitresume.cls
 % 哈尔滨工业大学主题简历模板
 % 作者: MaxwellJay256
-% 版本: 2026.03.23
+% 版本: 2026.10.07
 % 说明: 基于 LaTeX 的个人简历模板，适合哈尔滨工业大学学生使用。
-%      图标和颜色参考哈尔滨工业大学视觉识别系统，符合工大风格。
+%      图标和颜色参考哈尔滨工业大学视觉识别系统，符合哈工大风格。
 %      使用时请参考 demo.tex，或在其基础上修改。
 %      README.md 中有对自定义命令和环境的详细说明。
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hitresume}[2026/03/23 HIT Resume Template]
+\ProvidesClass{hitresume}[2026/10/07 HIT Resume Template]
 
 % 类选项
 \RequirePackage{kvoptions}
@@ -28,7 +28,7 @@
 
 % ========== 颜色定义 ==========
 \RequirePackage{xcolor}
-\definecolor{HITBlueMain}{RGB}{0,84,122}   % 哈工大蓝
+\definecolor{HITBlueMain}{RGB}{0,83,117}   % 哈工大蓝
 \definecolor{HITBlueAux1}{RGB}{10,77,140}  % 辅助色 1
 \definecolor{HITBlueAux2}{RGB}{0,99,157}   % 辅助色 2
 \definecolor{HITBlueAux3}{RGB}{0,157,224}  % 辅助色 3
